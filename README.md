@@ -1,2 +1,2 @@
 # python-tavern-automation
-Repo for learning playwright api automation with yaml
+Repo for learning tavern pytest
