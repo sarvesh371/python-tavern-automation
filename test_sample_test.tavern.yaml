@@ -1,0 +1,68 @@
+test_name: Full CRUD Flow
+
+stages:
+  - name: Create a new object
+    request:
+      url: https://api.restful-api.dev/objects
+      method: POST
+      json:
+        name: "Apple MacBook Pro 16"
+        data:
+          year: 2025
+          price: 1849.99
+          CPU model: "Intel Core i9"
+          Hard disk size: "1 TB"
+    response:
+      status_code: 200
+      json:
+        id: !anystr
+        name: "Apple MacBook Pro 16"
+        createdAt: !anystr
+        data:
+          year: 2025
+          price: 1849.99
+          CPU model: "Intel Core i9"
+          Hard disk size: "1 TB"  
+      save:
+        json:
+          created_object_id: id
+
+  - name: Retrieve the created post
+    request:
+      url: "https://api.restful-api.dev/objects/{created_object_id}"
+      method: GET
+    response:
+      status_code: 200
+      json:
+        id: "{created_object_id}"
+        name: "Apple MacBook Pro 16"
+        data:
+          year: 2025
+          price: 1849.99
+          CPU model: "Intel Core i9"
+          Hard disk size: "1 TB"
+  
+  - name: Update the created object
+    request:
+      url: "https://api.restful-api.dev/objects/{created_object_id}"
+      method: PUT
+      json:
+        name: "Apple MacBook Pro 16"
+        data:
+          year: 2025
+          price: 1849.99
+          CPU model: "Intel Core i9"
+          Hard disk size: "1 TB"
+          color: "silver"
+    response:
+      status_code: 200
+      json:
+        id: "{created_object_id}"
+        name: "Apple MacBook Pro 16"
+        data:
+          year: 2025
+          price: 1849.99
+          CPU model: "Intel Core i9"
+          Hard disk size: "1 TB"
+          color: "silver"
+        updatedAt: !anystr
