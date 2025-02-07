@@ -3,7 +3,7 @@ test_name: Full CRUD Flow
 stages:
   - name: Create a new object
     request:
-      url: https://api.restful-api.dev/objects
+      url: "{tavern.env_vars.BASE_URL}/objects"
       method: POST
       json:
         name: "Apple MacBook Pro 16"
@@ -30,7 +30,7 @@ stages:
 
   - name: Retrieve the created post
     request:
-      url: "https://api.restful-api.dev/objects/{created_object_id}"
+      url: "{tavern.env_vars.BASE_URL}/objects/{created_object_id}"
       method: GET
     response:
       status_code: 200
@@ -45,7 +45,7 @@ stages:
   
   - name: Update the created object
     request:
-      url: "https://api.restful-api.dev/objects/{created_object_id}"
+      url: "{tavern.env_vars.BASE_URL}/objects/{created_object_id}"
       method: PUT
       json:
         name: "Apple MacBook Pro 16"
