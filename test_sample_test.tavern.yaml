@@ -16,13 +16,14 @@ stages:
       status_code: 200
       json:
         id: !anystr
-        name: "Apple MacBook Pro 16"
+        name: "{tavern.request_vars.json.name}"
         createdAt: !anystr
-        data:
-          year: 2025
-          price: 1849.99
-          CPU model: "Intel Core i9"
-          Hard disk size: "1 TB"  
+        data: 
+          year: !int "{tavern.request_vars.json.data.year}"
+          price: !float "{tavern.request_vars.json.data.price}"
+          CPU model: "{tavern.request_vars.json.data.CPU model}"
+          Hard disk size: "{tavern.request_vars.json.data.Hard disk size}"
+
       save:
         json:
           created_object_id: id
@@ -58,11 +59,11 @@ stages:
       status_code: 200
       json:
         id: "{created_object_id}"
-        name: "Apple MacBook Pro 16"
+        name: "{tavern.request_vars.json.name}"
         data:
-          year: 2025
-          price: 1849.99
-          CPU model: "Intel Core i9"
-          Hard disk size: "1 TB"
-          color: "silver"
+          year: !int "{tavern.request_vars.json.data.year}"
+          price: !float "{tavern.request_vars.json.data.price}"
+          CPU model: "{tavern.request_vars.json.data.CPU model}"
+          Hard disk size: "{tavern.request_vars.json.data.Hard disk size}"
+          color: "{tavern.request_vars.json.data.color}"
         updatedAt: !anystr
