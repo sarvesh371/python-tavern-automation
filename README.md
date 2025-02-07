@@ -12,3 +12,8 @@ Repo for learning tavern pytest
 pytest test_sample_test.tavern.yaml
 ```
 
+## Generate allure report
+
+```bash
+allure serve
+```
