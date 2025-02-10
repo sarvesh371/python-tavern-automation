@@ -28,7 +28,7 @@ stages:
         json:
           created_object_id: id
 
-  - name: Retrieve the created post
+  - name: Retrieve the created object
     request:
       url: "{tavern.env_vars.BASE_URL}/objects/{created_object_id}"
       method: GET
@@ -57,13 +57,5 @@ stages:
           color: "silver"
     response:
       status_code: 200
-      json:
-        id: "{created_object_id}"
-        name: "{tavern.request_vars.json.name}"
-        data:
-          year: !int "{tavern.request_vars.json.data.year}"
-          price: !float "{tavern.request_vars.json.data.price}"
-          CPU model: "{tavern.request_vars.json.data.CPU model}"
-          Hard disk size: "{tavern.request_vars.json.data.Hard disk size}"
-          color: "{tavern.request_vars.json.data.color}"
-        updatedAt: !anystr
+      verify_response_with:
+        function: testing_utils:verify_updated_user
